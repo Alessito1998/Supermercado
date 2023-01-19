@@ -1,5 +1,6 @@
 package supermercado1;
 
+import java.nio.file.spi.FileSystemProvider;
 import java.util.*;
 
 public class SupermercadoMain {
@@ -9,6 +10,8 @@ public class SupermercadoMain {
 	static List<String> productos = Arrays.asList("tomate", "aceite", "pan", "leche", "yogur", "queso", "jamón",
 			"harina", "champú", "manzana");
 
+	static String [] datos = new String [productos.size()];
+	
 	public static final String ANSI_RED = "\u001B[31m";
 
 	public static final String ANSI_YELLOW = "\u001B[33m";
@@ -217,7 +220,7 @@ public class SupermercadoMain {
 
 	public static void consultarProducto(List<String> carrito) {
 
-		System.out.println("Introduzca el producto que desea buscar");
+		System.out.println("Introduzca el producto que desea consultar");
 
 		String producto = entrada.nextLine();
 
@@ -225,9 +228,17 @@ public class SupermercadoMain {
 			entrada.nextLine();
 		}
 
-		System.out.println("\n" + carrito.contains(producto) + "\n");
+		for (int n = 0; n < productos.size(); n++) {
+			
+			if (productos.get(n).equals(producto)) {
+				
+				System.out.println(datos[n]);
+				
+			}
+			
+		}
 
-		// ESTÁ MAL, NECESITA DESCRIPCIÓN DE CADA PRODUCTO
+		// HAY QUE AÑADIR LOS DATOS
 
 	}
 
@@ -264,8 +275,7 @@ public class SupermercadoMain {
 
 		int accionesPersonal;
 
-		System.out.println(
-				"******** MENÚ ******** \n\n1. Mostrar productos sel supermercado \n2. Añadir productos \n3. Eliminar productos \n4.Modificar producto \n5. Salir\n");
+		System.out.println("******** MENÚ ******** \n\n1. Mostrar productos sel supermercado \n2. Añadir productos \n3. Eliminar productos \n4.Modificar producto \n5. Salir\n");
 
 		accionesPersonal = entrada.nextInt();
 
@@ -448,6 +458,12 @@ public class SupermercadoMain {
 		}
 	}
 
+	public static void modificar() {
+		
+		
+		
+	}
+	
 	public static void finalizar() {
 
 		// System.meloinvento("FINALIZAR RPOGRAMA");
@@ -455,7 +471,7 @@ public class SupermercadoMain {
 	}
 
 	public static void main(String[] args) {
-
+		
 		System.out.println("Bienvenido al supermercado\n");
 
 		acceso();
