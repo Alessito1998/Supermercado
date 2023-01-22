@@ -94,7 +94,7 @@ public class SupermercadoMain {
 
 	}
 
-	// DEPENDIENDO DE LA OPCIÓN ESCUGIDA ENTRE 1 Y 5 SE LLAMARÁ A SU RESPECTIVO MÉTODO
+	// DEPENDIENDO DE LA OPCIÓN ESCUGIDA ENTRE 1 Y 6 SE LLAMARÁ A SU RESPECTIVO MÉTODO
 
 	public static void acciones(int accion, List<String> carrito) {
 
@@ -188,8 +188,6 @@ public class SupermercadoMain {
 					System.out.println(ANSI_YELLOW
 							+ "\nEste producto ya está en la lista, por favor elija otro producto\n" + ANSI_RESET);
 
-					carrito.remove(producto);
-
 					SiNo = "si";
 
 				}
@@ -236,6 +234,8 @@ public class SupermercadoMain {
 	public static void mostrarCarrito(List<String> carrito) {
 
 		Collections.sort(carrito);
+		
+		Collections.sort(datos);
 
 		System.out.println(carrito);
 
@@ -617,6 +617,17 @@ public class SupermercadoMain {
 
 				if (productos.contains(producto)) {
 
+					for (int n = 0; n < productos.size(); n++) {
+						
+						if (productos.get(n).equals(producto)) {
+							
+							datos.remove(datos.get(n));
+							
+						}
+						
+					}
+					
+					
 					productos.remove(producto);
 
 				}
@@ -722,21 +733,13 @@ public class SupermercadoMain {
 		productos = Arrays.asList("tomate", "aceite", "pan", "leche", "yogur", "queso", "jamón", "harina", "champu",
 				"manzana");
 
+		datos = Arrays.asList("tomate: Tomate ecológico de huerta española.", "aceite: Aceite producido en Andalucía.", 
+				"pan: Pan elavorado en el día.", "leche: Leche fresca de vaca asturiana.", "yogur: Yogur eleavorado con leche de vaca pasteurizada.", 
+				"queso: Queso elavorado con leche de oveja.", "jamón: Jamón ibérico de bellota.", "harina: Harina de trigo.", "champu: Champú fortificante olor melocotón.", 
+				"manzana: Manzana de origen nacional.");
+
 		carrito = new LinkedList<String>();
-
-		datos = new ArrayList<String>();
-
-		datos.add("tomate: Tomate ecológico de huerta española.");
-		datos.add("aceite: Aceite producido en Andalucía.");
-		datos.add("pan: Pan elavorado en el día.");
-		datos.add("leche: Leche fresca de vaca asturiana.");
-		datos.add("yogur: Yogur eleavorado con leche de vaca pasteurizada.");
-		datos.add("queso: Queso elavorado con leche de oveja.");
-		datos.add("jamón: Jamón ibérico de bellota.");
-		datos.add("harina: Harina de trigo.");
-		datos.add("champu: Champú fortificante olor melocotón.");
-		datos.add("manzana: Manzana de origen nacional.");
-
+		
 		System.out.println("Bienvenido al supermercado\n");
 
 		acceso();
